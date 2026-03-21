@@ -4,12 +4,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="footer">
+      <div className="footer__container">
+        <div className="footer__grid">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-2xl font-bold text-primary">
+            <Link href="/" className="text-2xl font-bold text-secondary hover:text-secondary-light transition-colors">
               泰國留學
             </Link>
             <p className="mt-4 text-gray-400 text-sm leading-relaxed">
@@ -21,7 +21,7 @@ export default function Footer() {
                 href="https://lin.ee/Tx17iiE"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="text-gray-400 hover:text-secondary transition-colors"
               >
                 LINE 諮詢
               </a>
@@ -29,7 +29,7 @@ export default function Footer() {
                 href="https://studywb.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="text-gray-400 hover:text-secondary transition-colors"
               >
                 學無界官網
               </a>
@@ -38,30 +38,30 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">快速連結</h3>
+            <h3 className="footer__title">快速連結</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/thai-university" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                <Link href="/thai-university" className="footer__link">
                   泰國大學
                 </Link>
               </li>
               <li>
-                <Link href="/thai-program" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                <Link href="/thai-program" className="footer__link">
                   國際學程
                 </Link>
               </li>
               <li>
-                <Link href="/thai-school" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                <Link href="/thai-school" className="footer__link">
                   國際學校
                 </Link>
               </li>
               <li>
-                <Link href="/thai-camp" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                <Link href="/thai-camp" className="footer__link">
                   夏令營
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                <Link href="/blog" className="footer__link">
                   留學攻略
                 </Link>
               </li>
@@ -70,14 +70,14 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">聯絡我們</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h3 className="footer__title">聯絡我們</h3>
+            <ul className="space-y-2">
               <li>
                 <a
                   href="https://lin.ee/Tx17iiE"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
+                  className="footer__link"
                 >
                   LINE: @studywb
                 </a>
@@ -87,7 +87,7 @@ export default function Footer() {
                   href="https://studywb.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
+                  className="footer__link"
                 >
                   官網: studywb.com
                 </a>
@@ -97,16 +97,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-400">
+        <div className="footer__bottom">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>
               © {currentYear} 學無界 Study Without Borders. All rights reserved.
             </p>
-            <div className="mt-4 md:mt-0 flex space-x-6">
-              <Link href="/privacy" className="text-sm text-gray-400 hover:text-primary transition-colors">
+            <div className="flex space-x-6">
+              <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
                 隱私權政策
               </Link>
-              <Link href="/terms" className="text-sm text-gray-400 hover:text-primary transition-colors">
+              <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
                 服務條款
               </Link>
             </div>

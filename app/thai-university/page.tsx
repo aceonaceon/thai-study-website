@@ -1,24 +1,29 @@
 import { Metadata } from 'next';
 import ArticleList from '@/components/ArticleList';
 import Breadcrumb from '@/components/Breadcrumb';
-import { getThaiUniversities } from '@/lib/notion';
+import fs from 'fs';
+import path from 'path';
 
 export const metadata: Metadata = {
   title: '泰國大學 | 泰國留學',
   description: '泰國大學完整介紹，包含朱拉隆功、法政、易三倉等知名大學排名、科系特色、申請條件與學費資訊。',
 };
 
-export default async function ThaiUniversityPage() {
+export default function ThaiUniversityPage() {
+  // 讀取預先抓取的 JSON 檔案
+  const dataPath = path.join(process.cwd(), 'public/data/universities.json');
   let universities: any[] = [];
+  
   try {
-    universities = await getThaiUniversities();
+    const data = fs.readFileSync(dataPath, 'utf8');
+    universities = JSON.parse(data);
   } catch (error) {
-    console.error('Failed to fetch universities:', error);
+    console.error('Failed to read universities data:', error);
   }
 
   const articles = universities.map((uni) => ({
     title: uni.name,
-    excerpt: uni.introduction,
+    excerpt: uni.introduction || uni.excerpt,
     featureImage: uni.featureImage,
     category: uni.type,
     author: 'Jason Huang',

@@ -31,20 +31,20 @@ export default function ArticleCard({
     : '';
 
   return (
-    <article className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+    <article className="card article-card group">
       <Link href={`/${basePath}/${slug}`}>
         {/* Feature Image */}
-        <div className="relative aspect-video bg-light-bg">
+        <div className="relative aspect-video bg-gray-100 rounded-md overflow-hidden mb-4">
           {featureImage ? (
             <Image
               src={featureImage}
               alt={title}
               fill
-              className="object-cover"
+              className="article-card__image"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center text-muted">
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400">
               <svg
                 className="w-16 h-16"
                 fill="none"
@@ -62,31 +62,25 @@ export default function ArticleCard({
           )}
         </div>
 
-        {/* Content */}
-        <div className="p-5">
-          {/* Category & Reading Time */}
-          <div className="flex items-center gap-2 mb-3">
-            <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
-              {category}
-            </span>
-            <span className="text-xs text-muted">5 分鐘閱讀</span>
-          </div>
+        {/* Category Tag */}
+        <span className="article-card__tag">{category}</span>
 
-          {/* Title */}
-          <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-            {title}
-          </h3>
+        {/* Title */}
+        <h3 className="article-card__title group-hover:text-primary transition-colors">
+          {title}
+        </h3>
 
-          {/* Excerpt */}
-          {excerpt && (
-            <p className="text-sm text-muted mb-4 line-clamp-3">{excerpt}</p>
-          )}
+        {/* Excerpt */}
+        {excerpt && (
+          <p className="article-card__excerpt">{excerpt}</p>
+        )}
 
-          {/* Author & Date */}
-          <div className="flex items-center justify-between text-xs text-muted">
-            {author && <span>{author}</span>}
-            {formattedDate && <span>{formattedDate}</span>}
-          </div>
+        {/* Author & Date */}
+        <div className="article-card__meta">
+          {author && <span>{author}</span>}
+          {author && formattedDate && <span> · </span>}
+          {formattedDate && <span>{formattedDate}</span>}
+          <span> · 5 分鐘閱讀</span>
         </div>
       </Link>
     </article>

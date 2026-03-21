@@ -5,7 +5,8 @@ import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/Breadcrumb';
 import AuthorBio from '@/components/AuthorBio';
 import CTABanner from '@/components/CTABanner';
-import { getThaiUniversities, getThaiUniversityBySlug } from '@/lib/notion';
+import NotionContent from '@/components/NotionContent';
+import { getThaiUniversities, getThaiUniversityBySlug, getPageContent } from '@/lib/notion';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -57,6 +58,9 @@ export default async function ThaiUniversityDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Fetch full page content using react-notion-x
+  const recordMap = await getPageContent(university.id);
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumb
@@ -104,6 +108,11 @@ export default async function ThaiUniversityDetailPage({ params }: PageProps) {
             <h2>學校簡介</h2>
             <p>{university.introduction}</p>
           </div>
+        )}
+
+        {/* Notion Content */}
+        {recordMap && (
+          <NotionContent recordMap={recordMap} />
         )}
 
         {/* CTA Inline */}

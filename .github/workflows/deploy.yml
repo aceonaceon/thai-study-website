@@ -5,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '0 */2 * * *'  # 每 2 小時檢查一次
 
 jobs:
   build-and-deploy:

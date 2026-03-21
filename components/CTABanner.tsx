@@ -13,17 +13,17 @@ export default function CTABanner({
 }: CTABannerProps) {
   if (variant === 'sidebar') {
     return (
-      <div className="bg-light-bg border-2 border-primary rounded-lg p-6">
+      <div className="card border-2 border-primary">
         <div className="text-2xl mb-3">💡</div>
-        <h3 className="text-lg font-semibold text-foreground mb-2">免費諮詢</h3>
-        <p className="text-sm text-muted mb-4">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">免費諮詢</h3>
+        <p className="text-sm text-gray-500 mb-4">
           還有疑問？學無界顧問幫你解答
         </p>
         <Link
           href="https://lin.ee/Tx17iiE"
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full bg-primary text-white text-center py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all"
+          className="btn btn-primary w-full text-center"
         >
           加 LINE 諮詢
         </Link>
@@ -33,14 +33,14 @@ export default function CTABanner({
 
   if (variant === 'inline') {
     return (
-      <div className="bg-primary/5 border-l-4 border-primary p-6 my-8 rounded-r-lg">
-        <p className="text-foreground">
+      <div className="bg-primary-50 border-l-4 border-primary p-6 my-8 rounded-r-lg">
+        <p className="text-gray-600">
           如果你正在考慮泰國留學，學無界提供免費諮詢服務，幫你評估最適合的學校和科系。
           <Link
             href="https://lin.ee/Tx17iiE"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline ml-1"
+            className="text-primary hover:text-primary-light ml-1 font-medium transition-colors"
           >
             加 LINE 諮詢 →
           </Link>
@@ -51,22 +51,22 @@ export default function CTABanner({
 
   // Full variant (default)
   return (
-    <div className="bg-primary text-white rounded-lg p-8 md:p-12">
+    <div className="bg-primary text-white rounded-xl p-8 md:p-12">
       <div className="text-3xl mb-4">🎯</div>
-      <h2 className="text-2xl md:text-3xl font-bold mb-4">{title}</h2>
-      <p className="text-white/90 mb-6 max-w-2xl">{description}</p>
+      <h2 className="text-h2 text-white mb-4">{title}</h2>
+      <p className="text-white/90 mb-6 max-w-2xl leading-relaxed">{description}</p>
 
-      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+      <div className="flex flex-col sm:flex-row gap-3 mb-6 text-sm">
         <div className="flex items-center gap-2">
-          <span className="text-white/80">✓</span>
+          <span className="text-secondary-light">✓</span>
           <span>免費評估申請資歷</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-white/80">✓</span>
+          <span className="text-secondary-light">✓</span>
           <span>客製化選校建議</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-white/80">✓</span>
+          <span className="text-secondary-light">✓</span>
           <span>申請文件代辦服務</span>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function CTABanner({
           href="https://lin.ee/Tx17iiE"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all text-center"
+          className="btn btn-lg bg-white text-primary hover:bg-gray-100 text-center"
         >
           立即加 LINE 諮詢
         </Link>
@@ -84,7 +84,7 @@ export default function CTABanner({
           href="https://studywb.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all text-center"
+          className="btn btn-lg border-2 border-white text-white hover:bg-white hover:text-primary text-center"
         >
           前往學無界官網
         </Link>
