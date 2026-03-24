@@ -15,7 +15,8 @@ export const DATABASE_IDS = {
   THAI_PROGRAM: '3292b55d-2c6a-81fd-95e5-f58e2a2fab78',
   THAI_SCHOOL: '3292b55d-2c6a-815f-9abb-d34d09aad1d6',
   THAI_CAMP: '3292b55d-2c6a-8185-93dc-cb1cd377f6a9',
-  BLOG: '3292b55d-2c6a-8179-84fc-f175595e478d',
+  BLOG: '3292b55d-2c6a-8179-84fc-f175595e478d',           // 語意矩陣與新聞（主要部落格文章）
+  ARTICLES: '3292b55d-2c6a-81ed-bfe5-ec6b5ac809e5',       // 泰國留學網文章資料庫
 } as const;
 
 // Types

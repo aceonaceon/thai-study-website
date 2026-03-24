@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prefetch": "npx ts-node --esm scripts/prefetch-data.ts"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.14",

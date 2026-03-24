@@ -38,7 +38,7 @@
 
 ### 2.2 技術棧
 - **CMS**：Notion Database
-- **前端框架**：Next.js 14（App Router）+ React 18
+- **前端框架**：Next.js 16（App Router）+ React 19
 - **部署**：Cloudflare Pages（靜態生成）
 - **樣式**：Tailwind CSS
 - **圖片**：Cloudflare R2 / FAL AI 生成

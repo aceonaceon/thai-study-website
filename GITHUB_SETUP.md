@@ -40,6 +40,6 @@ git log --oneline
 1. 連結 GitHub repo
 2. Framework preset: Next.js
 3. Build command: `npm run build`
-4. Output directory: `.next`
+4. Output directory: `out`
 5. 環境變數：`NOTION_API_KEY`
 6. 域名：`thai.studywb.com`

@@ -2,6 +2,7 @@
 # 檢查 Notion 是否有新文章，有則觸發部署
 
 NOTION_TOKEN="${NOTION_API_KEY}"
+# 泰國留學網文章資料庫 — 對應 lib/notion.ts 的 ARTICLES
 DATABASE_ID="3292b55d-2c6a-81ed-bfe5-ec6b5ac809e5"
 STATE_FILE="/tmp/notion-last-check.json"
 
@@ -9,6 +10,7 @@ STATE_FILE="/tmp/notion-last-check.json"
 if [ -f "$STATE_FILE" ]; then
   LAST_CHECK=$(cat "$STATE_FILE")
 else
+  # Note: GNU date syntax, runs on GitHub Actions (Linux)
   LAST_CHECK=$(date -u -d "1 hour ago" +"%Y-%m-%dT%H:%M:%S.000Z")
 fi
 
