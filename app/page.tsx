@@ -61,57 +61,93 @@ export default async function Home() {
             {/* Thai University */}
             <Link
               href="/thai-university"
-              className="card group hover:border-primary animate-fade-in-up"
+              className="card group hover:border-primary animate-fade-in-up overflow-hidden !p-0"
             >
-              <div className="text-4xl mb-4">🏛️</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                泰國大學
-              </h3>
-              <p className="text-gray-500 text-sm">
-                朱拉隆功、法政、易三倉等知名大學介紹與申請指南
-              </p>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/thai-university.jpg"
+                  alt="泰國大學"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                  泰國大學
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  朱拉隆功、法政、易三倉等知名大學介紹與申請指南
+                </p>
+              </div>
             </Link>
 
             {/* Thai Program */}
             <Link
               href="/thai-program"
-              className="card group hover:border-primary animate-fade-in-up animation-delay-100"
+              className="card group hover:border-primary animate-fade-in-up animation-delay-100 overflow-hidden !p-0"
             >
-              <div className="text-4xl mb-4">📚</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                國際學程
-              </h3>
-              <p className="text-gray-500 text-sm">
-                學士、碩士、博士國際學程，全英文授課環境
-              </p>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/international-program.jpg"
+                  alt="國際學程"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                  國際學程
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  學士、碩士、博士國際學程，全英文授課環境
+                </p>
+              </div>
             </Link>
 
             {/* Thai School */}
             <Link
               href="/thai-school"
-              className="card group hover:border-primary animate-fade-in-up animation-delay-200"
+              className="card group hover:border-primary animate-fade-in-up animation-delay-200 overflow-hidden !p-0"
             >
-              <div className="text-4xl mb-4">🏫</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                國際學校
-              </h3>
-              <p className="text-gray-500 text-sm">
-                曼谷、清邁國際學校，IB/AP/A-Level 課程體系
-              </p>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/international-school.jpg"
+                  alt="國際學校"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                  國際學校
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  曼谷、清邁國際學校，IB/AP/A-Level 課程體系
+                </p>
+              </div>
             </Link>
 
             {/* Thai Camp */}
             <Link
               href="/thai-camp"
-              className="card group hover:border-primary animate-fade-in-up animation-delay-300"
+              className="card group hover:border-primary animate-fade-in-up animation-delay-300 overflow-hidden !p-0"
             >
-              <div className="text-4xl mb-4">⛺</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                夏令營
-              </h3>
-              <p className="text-gray-500 text-sm">
-                英文營、體育營、藝術營，讓孩子度過充實暑假
-              </p>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/summer-camp.jpg"
+                  alt="夏令營"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                  夏令營
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  英文營、體育營、藝術營，讓孩子度過充實暑假
+                </p>
+              </div>
             </Link>
           </div>
         </div>
