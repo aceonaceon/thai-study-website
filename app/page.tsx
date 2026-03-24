@@ -52,8 +52,8 @@ export default async function Home() {
       </section>
 
       {/* Quick Links */}
-      <section className="section">
-        <div className="container">
+      <section className="section thai-pattern-bg">
+        <div className="container relative z-1">
           <h2 className="text-h2 text-gray-900 text-center mb-12">
             探索泰國留學選項
           </h2>
@@ -118,8 +118,8 @@ export default async function Home() {
       </section>
 
       {/* Why Thailand */}
-      <section className="section bg-gray-50">
-        <div className="container">
+      <section className="section bg-gray-50 thai-pattern-bg">
+        <div className="container relative z-1">
           <h2 className="text-h2 text-gray-900 text-center mb-12">
             為什麼選擇泰國留學？
           </h2>
