@@ -1,8 +1,22 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const navLinks = [
+  { href: '/thai-university', label: '泰國大學' },
+  { href: '/thai-program', label: '國際學程' },
+  { href: '/thai-school', label: '國際學校' },
+  { href: '/thai-camp', label: '夏令營' },
+  { href: '/blog', label: '留學攻略' },
+  { href: '/about', label: '關於我們' },
+];
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
     <header className="navbar">
       <nav className="navbar__container">
@@ -14,27 +28,20 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <div className="navbar__menu hidden md:flex">
-          <Link href="/thai-university" className="hover:text-primary transition-colors">
-            泰國大學
-          </Link>
-          <Link href="/thai-program" className="hover:text-primary transition-colors">
-            國際學程
-          </Link>
-          <Link href="/thai-school" className="hover:text-primary transition-colors">
-            國際學校
-          </Link>
-          <Link href="/thai-camp" className="hover:text-primary transition-colors">
-            夏令營
-          </Link>
-          <Link href="/blog" className="hover:text-primary transition-colors">
-            留學攻略
-          </Link>
-          <Link href="/about" className="hover:text-primary transition-colors">
-            關於我們
-          </Link>
+          {navLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`hover:text-primary transition-colors ${
+                pathname === href ? 'text-primary border-b-2 border-primary' : ''
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button + Mobile menu button */}
         <div className="flex items-center space-x-4">
           <Link
             href="https://lin.ee/Tx17iiE"
@@ -45,52 +52,71 @@ export default function Header() {
             免費諮詢
           </Link>
 
-          {/* Mobile menu button */}
+          {/* Hamburger / Close button */}
           <button
             className="md:hidden p-2 text-gray-600"
-            aria-label="打開選單"
-            onClick={() => {
-              const menu = document.getElementById('mobile-menu');
-              menu?.classList.toggle('hidden');
-            }}
+            aria-label={menuOpen ? '關閉選單' : '打開選單'}
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+            {menuOpen ? (
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
       </nav>
 
+      {/* Mobile Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/40 z-40 md:hidden transition-opacity duration-300 ${
+          menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setMenuOpen(false)}
+      />
+
       {/* Mobile Navigation */}
-      <div id="mobile-menu" className="hidden md:hidden border-t border-gray-200">
+      <div
+        className={`md:hidden border-t border-gray-200 overflow-hidden transition-all duration-300 ease-in-out relative z-50 bg-white ${
+          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
         <nav className="max-w-7xl mx-auto px-4 pb-4">
           <div className="flex flex-col space-y-3 pt-4">
-            <Link href="/thai-university" className="text-gray-600 hover:text-primary transition-colors py-2">
-              泰國大學
-            </Link>
-            <Link href="/thai-program" className="text-gray-600 hover:text-primary transition-colors py-2">
-              國際學程
-            </Link>
-            <Link href="/thai-school" className="text-gray-600 hover:text-primary transition-colors py-2">
-              國際學校
-            </Link>
-            <Link href="/thai-camp" className="text-gray-600 hover:text-primary transition-colors py-2">
-              夏令營
-            </Link>
-            <Link href="/blog" className="text-gray-600 hover:text-primary transition-colors py-2">
-              留學攻略
-            </Link>
-            <Link href="/about" className="text-gray-600 hover:text-primary transition-colors py-2">
-              關於我們
-            </Link>
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className={`hover:text-primary transition-colors py-2 ${
+                  pathname === href
+                    ? 'text-primary border-b-2 border-primary'
+                    : 'text-gray-600'
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </nav>
       </div>

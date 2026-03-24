@@ -1,13 +1,32 @@
 import type { Metadata } from "next";
+import { Noto_Sans_TC, Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { OrganizationJsonLd } from "@/components/JsonLd";
+
+const notoSansTC = Noto_Sans_TC({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   title: "泰國留學 | 學無界 Study Without Borders",
   description: "泰國留學完整指南，包含大學排名、國際學程、國際學校、夏令營資訊。學無界擁有 18 年留學代辦經驗，提供免費諮詢服務。",
   keywords: "泰國留學, 泰國大學, 泰國國際學校, 泰國夏令營, 學無界, 留學代辦",
   authors: [{ name: "Jason Huang" }],
+  alternates: {
+    canonical: "https://thai.studywb.com",
+  },
   openGraph: {
     title: "泰國留學 | 學無界 Study Without Borders",
     description: "泰國留學完整指南，包含大學排名、國際學程、國際學校、夏令營資訊。",
@@ -15,6 +34,7 @@ export const metadata: Metadata = {
     siteName: "泰國留學",
     locale: "zh_TW",
     type: "website",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -30,18 +50,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW" className="h-full antialiased">
-      <head>
-        {/* Google Fonts - Noto Sans TC */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="min-h-full flex flex-col font-sans">
+      <body className={`${notoSansTC.variable} ${montserrat.variable} min-h-full flex flex-col font-sans`}>
+        <a href="#main-content" className="skip-link">跳到主要內容</a>
+        <OrganizationJsonLd />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

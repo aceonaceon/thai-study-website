@@ -51,42 +51,29 @@ export default function CTABanner({
 
   // Full variant (default)
   return (
-    <div className="bg-primary text-white rounded-xl p-8 md:p-12">
-      <div className="text-3xl mb-4">🎯</div>
+    <div
+      className="text-white rounded-2xl p-8 md:p-12 text-center"
+      style={{ background: 'linear-gradient(135deg, #E85D04, #0066CC)' }}
+    >
       <h2 className="text-h2 text-white mb-4">{title}</h2>
-      <p className="text-white/90 mb-6 max-w-2xl leading-relaxed">{description}</p>
+      <p className="text-white/90 mb-8 max-w-[600px] mx-auto text-lg leading-relaxed">{description}</p>
 
-      <div className="flex flex-col sm:flex-row gap-3 mb-6 text-sm">
-        <div className="flex items-center gap-2">
-          <span className="text-secondary-light">✓</span>
-          <span>免費評估申請資歷</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-secondary-light">✓</span>
-          <span>客製化選校建議</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-secondary-light">✓</span>
-          <span>申請文件代辦服務</span>
-        </div>
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
         <Link
           href="https://lin.ee/Tx17iiE"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-lg bg-white text-primary hover:bg-gray-100 text-center"
+          className="btn btn-lg bg-white text-[#E85D04] hover:bg-gray-100 hover:-translate-y-0.5 hover:shadow-lg text-center font-semibold transition-all"
         >
-          立即加 LINE 諮詢
+          免費諮詢
         </Link>
         <Link
           href="https://studywb.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-lg border-2 border-white text-white hover:bg-white hover:text-primary text-center"
+          className="btn btn-lg border-2 border-white text-white hover:bg-white/10 hover:-translate-y-0.5 text-center font-semibold transition-all"
         >
-          前往學無界官網
+          了解更多
         </Link>
       </div>
     </div>

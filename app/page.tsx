@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import CTABanner from '@/components/CTABanner';
 import { getBlogPosts } from '@/lib/notion';
 
@@ -15,31 +16,37 @@ export default async function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-secondary-50 py-20 px-4">
-        <div className="container">
-          <div className="text-center">
-            <h1 className="text-display text-gray-900 mb-6">
-              泰國留學完整指南
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              學無界擁有 18 年留學代辦經驗，協助超過 1,000 位學生成功申請泰國大學、國際中學與夏令營
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="https://lin.ee/Tx17iiE"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary btn-lg"
-              >
-                免費諮詢
-              </Link>
-              <Link
-                href="/blog"
-                className="btn btn-secondary btn-lg"
-              >
-                查看留學攻略
-              </Link>
-            </div>
+      <section
+        className="relative min-h-[600px] flex items-center justify-center text-center text-white px-4"
+        style={{
+          background: 'linear-gradient(135deg, rgba(232,93,4,0.9), rgba(0,102,204,0.9)), url(/images/hero-bg.jpg) center/cover no-repeat',
+        }}
+      >
+        <div className="container relative z-10">
+          <h1
+            className="text-display text-white mb-6 animate-fade-in-up"
+            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}
+          >
+            泰國留學完整指南
+          </h1>
+          <p className="text-xl text-white/95 mb-8 max-w-[700px] mx-auto leading-relaxed animate-fade-in-up animation-delay-100">
+            學無界擁有 18 年留學代辦經驗，協助您探索泰國優質教育資源，開啟國際化學習之旅
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-200">
+            <Link
+              href="https://lin.ee/Tx17iiE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-lg bg-white text-[#E85D04] hover:bg-gray-100 font-semibold"
+            >
+              免費諮詢
+            </Link>
+            <Link
+              href="/blog"
+              className="btn btn-lg border-2 border-white text-white hover:bg-white/10"
+            >
+              查看攻略
+            </Link>
           </div>
         </div>
       </section>
@@ -54,7 +61,7 @@ export default async function Home() {
             {/* Thai University */}
             <Link
               href="/thai-university"
-              className="card group hover:border-primary"
+              className="card group hover:border-primary animate-fade-in-up"
             >
               <div className="text-4xl mb-4">🏛️</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
@@ -68,7 +75,7 @@ export default async function Home() {
             {/* Thai Program */}
             <Link
               href="/thai-program"
-              className="card group hover:border-primary"
+              className="card group hover:border-primary animate-fade-in-up animation-delay-100"
             >
               <div className="text-4xl mb-4">📚</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
@@ -82,7 +89,7 @@ export default async function Home() {
             {/* Thai School */}
             <Link
               href="/thai-school"
-              className="card group hover:border-primary"
+              className="card group hover:border-primary animate-fade-in-up animation-delay-200"
             >
               <div className="text-4xl mb-4">🏫</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
@@ -96,7 +103,7 @@ export default async function Home() {
             {/* Thai Camp */}
             <Link
               href="/thai-camp"
-              className="card group hover:border-primary"
+              className="card group hover:border-primary animate-fade-in-up animation-delay-300"
             >
               <div className="text-4xl mb-4">⛺</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
@@ -117,7 +124,7 @@ export default async function Home() {
             為什麼選擇泰國留學？
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="card">
+            <div className="card animate-fade-in-up">
               <div className="text-3xl mb-4">💰</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 學費與生活費便宜
@@ -127,7 +134,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="card">
+            <div className="card animate-fade-in-up animation-delay-100">
               <div className="text-3xl mb-4">🌐</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 英文授課環境
@@ -137,7 +144,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="card">
+            <div className="card animate-fade-in-up animation-delay-200">
               <div className="text-3xl mb-4">🌏</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 文化相近、適應容易
@@ -147,7 +154,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="card">
+            <div className="card animate-fade-in-up animation-delay-100">
               <div className="text-3xl mb-4">🛂</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 簽證與居留友善
@@ -157,7 +164,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="card">
+            <div className="card animate-fade-in-up animation-delay-200">
               <div className="text-3xl mb-4">📈</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 就業與發展機會
@@ -167,7 +174,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="card">
+            <div className="card animate-fade-in-up animation-delay-300">
               <div className="text-3xl mb-4">🎓</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 國際認可學歷
@@ -192,14 +199,15 @@ export default async function Home() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="card article-card group"
+                  className="card article-card group hover:border-[#E85D04] hover:shadow-[0_8px_24px_rgba(232,93,4,0.15)] hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
                     {post.featureImage ? (
-                      <img
+                      <Image
                         src={post.featureImage}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center text-gray-400">
@@ -207,10 +215,10 @@ export default async function Home() {
                       </div>
                     )}
                   </div>
-                  <span className="tag tag--secondary mb-3">
+                  <span className="inline-block px-3 py-1 rounded-full bg-[#E85D04] text-white text-xs font-semibold mb-3">
                     {post.category}
                   </span>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#E85D04] transition-colors">
                     {post.title}
                   </h3>
                   {post.excerpt && (
