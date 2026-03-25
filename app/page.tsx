@@ -15,17 +15,25 @@ export default async function Home() {
 
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section - Thai Deep Red with Gold Accents */}
       <section
         className="relative min-h-[600px] flex items-center justify-center text-center text-white px-4"
         style={{
-          background: 'linear-gradient(135deg, rgba(232,93,4,0.9), rgba(0,102,204,0.9)), url(/images/hero-bg.jpg) center/cover no-repeat',
+          background: `
+            linear-gradient(135deg, rgba(120, 30, 25, 0.95), rgba(80, 20, 18, 0.95)),
+            url(/images/hero-bg.jpg) center/cover no-repeat
+          `,
+          borderTop: '1px solid rgba(212, 175, 55, 0.3)',  /* Gold accent line */
+          borderBottom: '1px solid rgba(212, 175, 55, 0.3)',
         }}
       >
         <div className="container relative z-10">
           <h1
             className="text-display text-white mb-6 animate-fade-in-up"
-            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}
+            style={{ 
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              letterSpacing: '-0.02em',
+            }}
           >
             泰國留學完整指南
           </h1>
@@ -37,13 +45,23 @@ export default async function Home() {
               href="https://lin.ee/Tx17iiE"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg bg-white text-[#E85D04] hover:bg-gray-100 font-semibold"
+              className="btn btn-lg font-semibold"
+              style={{
+                backgroundColor: '#D4AF37',  /* Gold */
+                color: '#1a1a1a',
+                boxShadow: '0 4px 15px rgba(212, 175, 55, 0.3)',
+              }}
             >
               免費諮詢
             </Link>
             <Link
               href="/blog"
-              className="btn btn-lg border-2 border-white text-white hover:bg-white/10"
+              className="btn btn-lg"
+              style={{
+                border: '1px solid rgba(212, 175, 55, 0.5)',
+                color: '#fff',
+                backgroundColor: 'transparent',
+              }}
             >
               查看攻略
             </Link>
@@ -54,9 +72,14 @@ export default async function Home() {
       {/* Quick Links */}
       <section className="section thai-pattern-bg">
         <div className="container relative z-1">
-          <h2 className="text-h2 text-gray-900 text-center mb-12">
-            探索泰國留學選項
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-h2 text-gray-900 mb-4" style={{ letterSpacing: '-0.02em' }}>
+              探索泰國留學選項
+            </h2>
+            <p className="text-gray-500 max-w-[50ch] mx-auto">
+              從大學到中小學，從長期學位到短期營隊，找到最適合你的泰國教育方案
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Thai University */}
             <Link
@@ -153,97 +176,102 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Why Thailand */}
+      {/* Why Thailand - Numbered List Style */}
       <section className="section bg-gray-50 thai-pattern-bg">
         <div className="container relative z-1">
-          <h2 className="text-h2 text-gray-900 text-center mb-12">
-            為什麼選擇泰國留學？
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="card animate-fade-in-up">
-              <div className="text-3xl mb-4">💰</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                學費與生活費便宜
-              </h3>
-              <p className="text-gray-500 text-sm">
-                相比歐美國家，泰國留學費用可節省 50-70%，CP 值極高
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Left: Title section */}
+            <div>
+              <h2 className="text-h2 text-gray-900 mb-6" style={{ letterSpacing: '-0.02em' }}>
+                為什麼選擇<br />泰國留學？
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 max-w-[45ch] leading-relaxed">
+                相比歐美國家，泰國提供高品質的國際教育環境，費用卻只需三分之一。更重要的是，這裡的文化與台灣相近，生活適應零障礙。
               </p>
+              <Link
+                href="/blog"
+                className="btn btn-primary"
+              >
+                閱讀更多分析
+              </Link>
             </div>
 
-            <div className="card animate-fade-in-up animation-delay-100">
-              <div className="text-3xl mb-4">🌐</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                英文授課環境
-              </h3>
-              <p className="text-gray-500 text-sm">
-                許多大學提供全英文國際學程，無需泰語基礎也能順利學習
-              </p>
-            </div>
-
-            <div className="card animate-fade-in-up animation-delay-200">
-              <div className="text-3xl mb-4">🌏</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                文化相近、適應容易
-              </h3>
-              <p className="text-gray-500 text-sm">
-                泰國文化與台灣相近，華人比例高，生活適應無障礙
-              </p>
-            </div>
-
-            <div className="card animate-fade-in-up animation-delay-100">
-              <div className="text-3xl mb-4">🛂</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                簽證與居留友善
-              </h3>
-              <p className="text-gray-500 text-sm">
-                學生簽證申請相對容易，居留政策友善，家長可陪讀
-              </p>
-            </div>
-
-            <div className="card animate-fade-in-up animation-delay-200">
-              <div className="text-3xl mb-4">📈</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                就業與發展機會
-              </h3>
-              <p className="text-gray-500 text-sm">
-                東協市場蓬勃發展，泰國作為區域樞紐，就業機會多元
-              </p>
-            </div>
-
-            <div className="card animate-fade-in-up animation-delay-300">
-              <div className="text-3xl mb-4">🎓</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                國際認可學歷
-              </h3>
-              <p className="text-gray-500 text-sm">
-                泰國知名大學獲國際認證，學歷全球承認，回台可求職升學
-              </p>
+            {/* Right: Benefits list with numbers */}
+            <div className="space-y-2">
+              {[
+                { title: '學費與生活費便宜', desc: '相比歐美，泰國留學費用可節省 50-70%' },
+                { title: '英文授課環境', desc: '許多大學提供全英文國際學程' },
+                { title: '文化相近、適應容易', desc: '華人比例高，生活適應無障礙' },
+                { title: '簽證與居留友善', desc: '學生簽證申請容易，家長可陪讀' },
+                { title: '東協就業機會', desc: '泰國作為區域樞紐，就業機會多元' },
+                { title: '國際認可學歷', desc: '知名大學獲國際認證，學歷全球承認' },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="group flex items-start gap-5 p-4 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-sm"
+                >
+                  <span
+                    className="text-2xl font-light tabular-nums"
+                    style={{
+                      color: '#D4AF37',  /* Gold */
+                      fontFamily: 'Georgia, serif',
+                      minWidth: '2.5ch',
+                      letterSpacing: '-0.05em',
+                    }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Articles */}
+      {/* Featured Articles - Image-forward cards */}
       {featuredPosts.length > 0 && (
         <section className="section">
           <div className="container">
-            <h2 className="text-h2 text-gray-900 text-center mb-12">
-              精選文章
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredPosts.map((post) => (
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <h2 className="text-h2 text-gray-900 mb-2" style={{ letterSpacing: '-0.02em' }}>
+                  精選文章
+                </h2>
+                <p className="text-gray-500">
+                  第一手泰國留學資訊與經驗分享
+                </p>
+              </div>
+              <Link
+                href="/blog"
+                className="hidden sm:block text-sm font-medium text-primary hover:text-primary-dark transition-colors"
+              >
+                查看全部 →
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredPosts.map((post, index) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="card article-card group hover:border-[#E85D04] hover:shadow-[0_8px_24px_rgba(232,93,4,0.15)] hover:-translate-y-1 transition-all duration-300"
+                  className="card article-card group hover:-translate-y-1 transition-all duration-300"
+                  style={{ padding: 0, overflow: 'hidden' }}
                 >
-                  <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
+                  <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                     {post.featureImage ? (
                       <Image
                         src={post.featureImage}
                         alt={post.title}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center text-gray-400">
@@ -251,26 +279,39 @@ export default async function Home() {
                       </div>
                     )}
                   </div>
-                  <span className="inline-block px-3 py-1 rounded-full bg-[#E85D04] text-white text-xs font-semibold mb-3">
-                    {post.category}
-                  </span>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#E85D04] transition-colors">
-                    {post.title}
-                  </h3>
-                  {post.excerpt && (
-                    <p className="text-sm text-gray-500 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                  )}
+                  <div className="p-5">
+                    <span
+                      className="inline-block px-3 py-1 rounded text-xs font-medium mb-3"
+                      style={{
+                        backgroundColor: 'rgba(212, 175, 55, 0.15)',
+                        color: '#8B7355',
+                      }}
+                    >
+                      {post.category}
+                    </span>
+                    <h3
+                      className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-dark transition-colors"
+                      style={{ letterSpacing: '-0.01em' }}
+                    >
+                      {post.title}
+                    </h3>
+                    {post.excerpt && (
+                      <p className="text-sm text-gray-500 line-clamp-2">
+                        {post.excerpt}
+                      </p>
+                    )}
+                  </div>
                 </Link>
               ))}
             </div>
-            <div className="text-center mt-8">
+
+            {/* Mobile link */}
+            <div className="sm:hidden mt-8 text-center">
               <Link
                 href="/blog"
-                className="text-primary hover:text-primary-light font-medium transition-colors"
+                className="text-sm font-medium text-primary hover:text-primary-dark transition-colors"
               >
-                查看更多文章 →
+                查看全部文章 →
               </Link>
             </div>
           </div>

@@ -22,7 +22,15 @@ export default function Header() {
       <nav className="navbar__container">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold text-primary">泰國留學</span>
+          <span
+            className="text-2xl font-bold"
+            style={{
+              color: '#D4AF37',  /* Gold */
+              letterSpacing: '-0.02em',
+            }}
+          >
+            泰國留學
+          </span>
           <span className="text-sm text-gray-500 hidden sm:inline">by 學無界</span>
         </Link>
 
@@ -47,7 +55,11 @@ export default function Header() {
             href="https://lin.ee/Tx17iiE"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary btn-sm"
+            className="btn btn-sm font-semibold"
+            style={{
+              backgroundColor: '#D4AF37',
+              color: '#1a1a1a',
+            }}
           >
             免費諮詢
           </Link>
