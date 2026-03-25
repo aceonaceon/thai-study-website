@@ -1,23 +1,8 @@
 import type { Metadata } from "next";
-import { Noto_Sans_TC, Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { OrganizationJsonLd } from "@/components/JsonLd";
-
-const notoSansTC = Noto_Sans_TC({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-sans",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-heading",
-});
 
 export const metadata: Metadata = {
   title: "泰國留學 | 學無界 Study Without Borders",
@@ -50,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW" className="h-full antialiased">
-      <body className={`${notoSansTC.variable} ${montserrat.variable} min-h-full flex flex-col font-sans`}>
+      <body className="min-h-full flex flex-col" style={{ fontFamily: "'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif" }}>
         <a href="#main-content" className="skip-link">跳到主要內容</a>
         <OrganizationJsonLd />
         <Header />
