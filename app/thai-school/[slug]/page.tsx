@@ -55,85 +55,110 @@ export default async function ThaiSchoolDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Breadcrumb
-        items={[
-          { label: '國際學校', href: '/thai-school' },
-          { label: school.name },
-        ]}
-      />
-
-      <article>
-        <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-              {school.curriculum}
-            </span>
-            <span className="text-sm text-muted">{school.city}</span>
-          </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">{school.name}</h1>
-        </header>
-
-        {school.featureImage && (
-          <div className="relative aspect-video rounded-lg overflow-hidden mb-8">
-            <Image
-              src={school.featureImage}
-              alt={school.name}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
-
-        <CTABanner variant="inline" />
-
-        <div className="bg-light-bg rounded-lg p-6 my-8">
-          <h3 className="text-lg font-semibold text-foreground mb-4">學校資訊</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm text-muted">課程體系</p>
-              <p className="text-foreground font-medium">{school.curriculum}</p>
-            </div>
-            <div>
-              <p className="text-sm text-muted">年級</p>
-              <p className="text-foreground font-medium">{school.gradeLevel}</p>
-            </div>
-            <div>
-              <p className="text-sm text-muted">所在地</p>
-              <p className="text-foreground font-medium">{school.city}</p>
-            </div>
-            <div>
-              <p className="text-sm text-muted">住宿</p>
-              <p className="text-foreground font-medium">{school.boarding}</p>
-            </div>
-            {school.tuitionPerYear && (
-              <div>
-                <p className="text-sm text-muted">每年學費</p>
-                <p className="text-foreground font-medium">
-                  ฿{school.tuitionPerYear.toLocaleString()} 泰銖
-                </p>
-              </div>
-            )}
-            {school.website && (
-              <div>
-                <p className="text-sm text-muted">官方網站</p>
-                <a
-                  href={school.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline font-medium"
-                >
-                  前往官網 →
-                </a>
-              </div>
-            )}
-          </div>
+    <div>
+      {/* Feature Image — Full width cinematic composition */}
+      {school.featureImage && (
+        <div className="relative w-full overflow-hidden" style={{ height: '360px' }}>
+          <Image
+            src={school.featureImage}
+            alt={school.name}
+            fill
+            className="object-cover"
+            priority
+            style={{ filter: 'saturate(0.85) contrast(1.05) sepia(0.08) brightness(0.9)' }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to bottom, rgba(42,37,32,0.2), rgba(42,37,32,0.5))' }}
+          />
         </div>
+      )}
 
-        <AuthorBio />
-        <CTABanner />
-      </article>
+      <div className="container py-8" style={{ maxWidth: '800px' }}>
+        <Breadcrumb
+          items={[
+            { label: '國際學校', href: '/thai-school' },
+            { label: school.name },
+          ]}
+        />
+
+        <article>
+          {/* Header */}
+          <header className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="tag tag--primary">{school.curriculum}</span>
+              <span className="text-sm" style={{ color: 'var(--text-light)' }}>{school.city}</span>
+            </div>
+            <h1
+              className="text-h1 mb-4"
+              style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+            >
+              {school.name}
+            </h1>
+          </header>
+
+          <CTABanner variant="inline" />
+
+          {/* Quick Info */}
+          <div
+            className="rounded-lg p-6 my-8"
+            style={{ background: 'var(--bg-alt)', border: '1px solid var(--border-light)' }}
+          >
+            <h3
+              className="text-base font-semibold mb-4"
+              style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+            >
+              學校資訊
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>課程體系</p>
+                <p className="font-medium" style={{ color: 'var(--text)' }}>{school.curriculum}</p>
+              </div>
+              <div>
+                <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>年級</p>
+                <p className="font-medium" style={{ color: 'var(--text)' }}>{school.gradeLevel}</p>
+              </div>
+              <div>
+                <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>所在地</p>
+                <p className="font-medium" style={{ color: 'var(--text)' }}>{school.city}</p>
+              </div>
+              <div>
+                <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>住宿</p>
+                <p className="font-medium" style={{ color: 'var(--text)' }}>{school.boarding}</p>
+              </div>
+              {school.tuitionPerYear && (
+                <div>
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>每年學費</p>
+                  <p className="font-medium" style={{ color: 'var(--text)' }}>
+                    ฿{school.tuitionPerYear.toLocaleString()} 泰銖
+                  </p>
+                </div>
+              )}
+              {school.website && (
+                <div>
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>官方網站</p>
+                  <a
+                    href={school.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium"
+                    style={{ color: 'var(--primary)' }}
+                  >
+                    前往官網 →
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <AuthorBio />
+
+          <div className="separator-brass" />
+
+          <CTABanner />
+        </article>
+      </div>
     </div>
   );
 }

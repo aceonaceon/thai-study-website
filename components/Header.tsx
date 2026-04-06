@@ -19,79 +19,83 @@ export default function Header() {
 
   return (
     <header className="navbar">
-      <nav className="navbar__container">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+      <nav
+        className="flex items-center justify-between h-full"
+        style={{ maxWidth: 'var(--container-max)', margin: '0 auto' }}
+      >
+        {/* Logo — centered Wes Anderson style */}
+        <Link href="/" className="flex items-center gap-2">
           <span
-            className="text-2xl font-bold"
+            className="text-xl font-bold tracking-tight"
             style={{
-              color: '#D4AF37',  /* Gold */
+              fontFamily: "'Fraunces', 'Noto Serif TC', serif",
+              color: 'var(--primary)',
               letterSpacing: '-0.02em',
             }}
           >
             泰國留學
           </span>
-          <span className="text-sm text-gray-500 hidden sm:inline">by 學無界</span>
+          <span
+            className="text-xs font-medium hidden sm:inline"
+            style={{
+              color: 'var(--accent)',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+            }}
+          >
+            by 學無界
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="navbar__menu hidden md:flex">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`hover:text-primary transition-colors ${
-                pathname === href ? 'text-primary border-b-2 border-primary' : ''
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+        {/* Desktop Navigation — symmetrical */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map(({ href, label }) => {
+            const isActive = pathname === href || pathname.startsWith(href + '/');
+            return (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm font-medium transition-colors relative"
+                style={{
+                  color: isActive ? 'var(--primary)' : 'var(--text-muted)',
+                  letterSpacing: '0.02em',
+                }}
+              >
+                {label}
+                {isActive && (
+                  <span
+                    className="absolute -bottom-1 left-0 right-0 h-[2px]"
+                    style={{ background: 'var(--accent)' }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
-        {/* CTA Button + Mobile menu button */}
-        <div className="flex items-center space-x-4">
+        {/* CTA + Mobile toggle */}
+        <div className="flex items-center gap-3">
           <Link
             href="https://lin.ee/Tx17iiE"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-sm font-semibold"
-            style={{
-              backgroundColor: '#D4AF37',
-              color: '#1a1a1a',
-            }}
+            className="btn btn-primary btn-sm hidden sm:inline-flex"
           >
             免費諮詢
           </Link>
 
-          {/* Hamburger / Close button */}
           <button
-            className="md:hidden p-2 text-gray-600"
+            className="md:hidden p-2"
+            style={{ color: 'var(--text-muted)' }}
             aria-label={menuOpen ? '關閉選單' : '打開選單'}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
@@ -99,36 +103,55 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Overlay */}
+      {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 bg-black/40 z-40 md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${
           menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
+        style={{ background: 'rgba(42, 37, 32, 0.4)' }}
         onClick={() => setMenuOpen(false)}
       />
 
-      {/* Mobile Navigation */}
+      {/* Mobile navigation */}
       <div
-        className={`md:hidden border-t border-gray-200 overflow-hidden transition-all duration-300 ease-in-out relative z-50 bg-white ${
-          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden overflow-hidden transition-all duration-500 relative z-50 ${
+          menuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
         }`}
+        style={{
+          background: 'var(--bg)',
+          borderTop: '1px solid var(--border-light)',
+          transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+        }}
       >
-        <nav className="max-w-7xl mx-auto px-4 pb-4">
-          <div className="flex flex-col space-y-3 pt-4">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                className={`hover:text-primary transition-colors py-2 ${
-                  pathname === href
-                    ? 'text-primary border-b-2 border-primary'
-                    : 'text-gray-600'
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+        <nav className="py-4 px-6" style={{ maxWidth: 'var(--container-max)', margin: '0 auto' }}>
+          <div className="flex flex-col gap-1">
+            {navLinks.map(({ href, label }) => {
+              const isActive = pathname === href || pathname.startsWith(href + '/');
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-3 text-sm font-medium transition-colors"
+                  style={{
+                    color: isActive ? 'var(--primary)' : 'var(--text-muted)',
+                    borderBottom: '1px solid var(--border-light)',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  {label}
+                </Link>
+              );
+            })}
+            <Link
+              href="https://lin.ee/Tx17iiE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary mt-3 text-center"
+              onClick={() => setMenuOpen(false)}
+            >
+              免費諮詢
+            </Link>
           </div>
         </nav>
       </div>

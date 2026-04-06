@@ -55,93 +55,118 @@ export default async function ThaiCampDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Breadcrumb
-        items={[
-          { label: '夏令營', href: '/thai-camp' },
-          { label: camp.name },
-        ]}
-      />
-
-      <article>
-        <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-              {camp.campType}
-            </span>
-            <span className="text-sm text-muted">{camp.ageRange}</span>
-          </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">{camp.name}</h1>
-        </header>
-
-        {camp.featureImage && (
-          <div className="relative aspect-video rounded-lg overflow-hidden mb-8">
-            <Image
-              src={camp.featureImage}
-              alt={camp.name}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
-
-        <CTABanner variant="inline" />
-
-        <div className="bg-light-bg rounded-lg p-6 my-8">
-          <h3 className="text-lg font-semibold text-foreground mb-4">營隊資訊</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm text-muted">營隊類型</p>
-              <p className="text-foreground font-medium">{camp.campType}</p>
-            </div>
-            <div>
-              <p className="text-sm text-muted">適合年齡</p>
-              <p className="text-foreground font-medium">{camp.ageRange}</p>
-            </div>
-            <div>
-              <p className="text-sm text-muted">所在地</p>
-              <p className="text-foreground font-medium">{camp.city}</p>
-            </div>
-            {camp.durationWeeks && (
-              <div>
-                <p className="text-sm text-muted">營期</p>
-                <p className="text-foreground font-medium">{camp.durationWeeks} 週</p>
-              </div>
-            )}
-            {camp.fee && (
-              <div>
-                <p className="text-sm text-muted">費用</p>
-                <p className="text-foreground font-medium">
-                  ฿{camp.fee.toLocaleString()} 泰銖
-                </p>
-              </div>
-            )}
-            {camp.organizer && (
-              <div>
-                <p className="text-sm text-muted">主辦單位</p>
-                <p className="text-foreground font-medium">{camp.organizer}</p>
-              </div>
-            )}
-            {camp.website && (
-              <div className="md:col-span-2">
-                <p className="text-sm text-muted">報名網站</p>
-                <a
-                  href={camp.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline font-medium"
-                >
-                  前往報名 →
-                </a>
-              </div>
-            )}
-          </div>
+    <div>
+      {/* Feature Image — Full width cinematic composition */}
+      {camp.featureImage && (
+        <div className="relative w-full overflow-hidden" style={{ height: '360px' }}>
+          <Image
+            src={camp.featureImage}
+            alt={camp.name}
+            fill
+            className="object-cover"
+            priority
+            style={{ filter: 'saturate(0.85) contrast(1.05) sepia(0.08) brightness(0.9)' }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to bottom, rgba(42,37,32,0.2), rgba(42,37,32,0.5))' }}
+          />
         </div>
+      )}
 
-        <AuthorBio />
-        <CTABanner />
-      </article>
+      <div className="container py-8" style={{ maxWidth: '800px' }}>
+        <Breadcrumb
+          items={[
+            { label: '夏令營', href: '/thai-camp' },
+            { label: camp.name },
+          ]}
+        />
+
+        <article>
+          {/* Header */}
+          <header className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="tag tag--primary">{camp.campType}</span>
+              <span className="text-sm" style={{ color: 'var(--text-light)' }}>{camp.ageRange}</span>
+            </div>
+            <h1
+              className="text-h1 mb-4"
+              style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+            >
+              {camp.name}
+            </h1>
+          </header>
+
+          <CTABanner variant="inline" />
+
+          {/* Quick Info */}
+          <div
+            className="rounded-lg p-6 my-8"
+            style={{ background: 'var(--bg-alt)', border: '1px solid var(--border-light)' }}
+          >
+            <h3
+              className="text-base font-semibold mb-4"
+              style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+            >
+              營隊資訊
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>營隊類型</p>
+                <p className="font-medium" style={{ color: 'var(--text)' }}>{camp.campType}</p>
+              </div>
+              <div>
+                <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>適合年齡</p>
+                <p className="font-medium" style={{ color: 'var(--text)' }}>{camp.ageRange}</p>
+              </div>
+              <div>
+                <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>所在地</p>
+                <p className="font-medium" style={{ color: 'var(--text)' }}>{camp.city}</p>
+              </div>
+              {camp.durationWeeks && (
+                <div>
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>營期</p>
+                  <p className="font-medium" style={{ color: 'var(--text)' }}>{camp.durationWeeks} 週</p>
+                </div>
+              )}
+              {camp.fee && (
+                <div>
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>費用</p>
+                  <p className="font-medium" style={{ color: 'var(--text)' }}>
+                    ฿{camp.fee.toLocaleString()} 泰銖
+                  </p>
+                </div>
+              )}
+              {camp.organizer && (
+                <div>
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>主辦單位</p>
+                  <p className="font-medium" style={{ color: 'var(--text)' }}>{camp.organizer}</p>
+                </div>
+              )}
+              {camp.website && (
+                <div className="md:col-span-2">
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>報名網站</p>
+                  <a
+                    href={camp.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium"
+                    style={{ color: 'var(--primary)' }}
+                  >
+                    前往報名 →
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <AuthorBio />
+
+          <div className="separator-brass" />
+
+          <CTABanner />
+        </article>
+      </div>
     </div>
   );
 }

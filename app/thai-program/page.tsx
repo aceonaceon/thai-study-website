@@ -42,14 +42,21 @@ export default async function ThaiProgramPage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="container py-8">
       <Breadcrumb items={[{ label: '國際學程' }]} />
 
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-foreground mb-4">泰國國際學程</h1>
-        <p className="text-lg text-muted">
+      {/* Page Header */}
+      <div className="mb-10 text-center">
+        <h1
+          className="text-h1 mb-4"
+          style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+        >
+          泰國國際學程
+        </h1>
+        <p className="text-base mx-auto" style={{ color: 'var(--text-muted)', maxWidth: '560px' }}>
           泰國大學國際學程完整介紹，包含學士、碩士、博士全英文授課學程，申請條件、學費與就業前景。
         </p>
+        <div className="separator-brass" style={{ maxWidth: '60px', margin: 'var(--space-6) auto 0' }} />
       </div>
 
       <ArticleList

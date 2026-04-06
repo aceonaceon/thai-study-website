@@ -41,14 +41,21 @@ export default async function ThaiSchoolPage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="container py-8">
       <Breadcrumb items={[{ label: '國際學校' }]} />
 
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-foreground mb-4">泰國國際學校</h1>
-        <p className="text-lg text-muted">
+      {/* Page Header */}
+      <div className="mb-10 text-center">
+        <h1
+          className="text-h1 mb-4"
+          style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+        >
+          泰國國際學校
+        </h1>
+        <p className="text-base mx-auto" style={{ color: 'var(--text-muted)', maxWidth: '560px' }}>
           泰國國際學校完整介紹，包含曼谷、清邁國際學校，IB/AP/A-Level 課程體系、學費與申請流程。
         </p>
+        <div className="separator-brass" style={{ maxWidth: '60px', margin: 'var(--space-6) auto 0' }} />
       </div>
 
       <ArticleList

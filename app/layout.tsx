@@ -1,8 +1,37 @@
 import type { Metadata } from "next";
+import { Noto_Sans_TC, Noto_Serif_TC, Work_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { OrganizationJsonLd } from "@/components/JsonLd";
+
+const notoSansTC = Noto_Sans_TC({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-noto-sans",
+});
+
+const notoSerifTC = Noto_Serif_TC({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-noto-serif",
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+  variable: "--font-work-sans",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "900"],
+  display: "swap",
+  variable: "--font-fraunces",
+});
 
 export const metadata: Metadata = {
   title: "泰國留學 | 學無界 Study Without Borders",
@@ -35,7 +64,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW" className="h-full antialiased">
-      <body className="min-h-full flex flex-col" style={{ fontFamily: "'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif" }}>
+      <body
+        className={`${notoSansTC.variable} ${notoSerifTC.variable} ${workSans.variable} ${fraunces.variable} min-h-full flex flex-col`}
+        style={{ fontFamily: "'Work Sans', 'Noto Sans TC', -apple-system, sans-serif" }}
+      >
         <a href="#main-content" className="skip-link">跳到主要內容</a>
         <OrganizationJsonLd />
         <Header />

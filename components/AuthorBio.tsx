@@ -12,37 +12,54 @@ export default function AuthorBio({
   bio = '18 年留學代辦經驗 | 協助超過 1,000 位學生圓夢',
 }: AuthorBioProps) {
   return (
-    <div className="bg-light-bg rounded-lg p-6 my-8">
+    <div
+      className="rounded-lg p-6 my-8"
+      style={{
+        background: 'var(--bg-alt)',
+        border: '1px solid var(--border-light)',
+      }}
+    >
       <div className="flex items-start gap-4">
-        {/* Avatar */}
         <div className="flex-shrink-0">
-          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
+          <div
+            className="w-14 h-14 rounded-lg flex items-center justify-center text-xl"
+            style={{
+              background: 'var(--primary-ghost)',
+              border: '1px solid rgba(46, 139, 139, 0.15)',
+            }}
+          >
             👤
           </div>
         </div>
 
-        {/* Content */}
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-foreground">{name}</h3>
-          <p className="text-sm text-primary mb-2">{title}</p>
-          <p className="text-sm text-muted mb-4">{bio}</p>
+          <h3
+            className="text-base font-semibold"
+            style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+          >
+            {name}
+          </h3>
+          <p className="text-sm mb-2" style={{ color: 'var(--primary)' }}>{title}</p>
+          <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{bio}</p>
 
           <div className="flex gap-4">
             <Link
               href="https://studywb.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
+              className="text-sm font-medium transition-colors"
+              style={{ color: 'var(--primary)' }}
             >
-              🔗 學無界官網
+              學無界官網 →
             </Link>
             <Link
               href="https://lin.ee/Tx17iiE"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
+              className="text-sm font-medium transition-colors"
+              style={{ color: 'var(--primary)' }}
             >
-              📞 LINE 諮詢
+              LINE 諮詢 →
             </Link>
           </div>
         </div>

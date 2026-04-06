@@ -16,23 +16,25 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
         <li>
           <Link
             href="/"
-            className="text-muted hover:text-primary transition-colors"
+            className="transition-colors"
+            style={{ color: 'var(--text-light)' }}
           >
             首頁
           </Link>
         </li>
         {items.map((item, index) => (
           <li key={index} className="flex items-center gap-2">
-            <span className="text-muted">/</span>
+            <span style={{ color: 'var(--text-light)' }}>/</span>
             {item.href ? (
               <Link
                 href={item.href}
-                className="text-muted hover:text-primary transition-colors"
+                className="transition-colors"
+                style={{ color: 'var(--text-light)' }}
               >
                 {item.label}
               </Link>
             ) : (
-              <span className="text-foreground">{item.label}</span>
+              <span style={{ color: 'var(--text)', fontWeight: 500 }}>{item.label}</span>
             )}
           </li>
         ))}

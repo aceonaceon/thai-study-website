@@ -55,80 +55,106 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Breadcrumb
-        items={[
-          { label: '留學攻略', href: '/blog' },
-          { label: post.title },
-        ]}
-      />
+    <div>
+      {/* Feature Image — Full width cinematic composition */}
+      {post.featureImage && (
+        <div className="relative w-full overflow-hidden" style={{ height: '360px' }}>
+          <Image
+            src={post.featureImage}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            style={{ filter: 'saturate(0.85) contrast(1.05) sepia(0.08) brightness(0.9)' }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to bottom, rgba(42,37,32,0.2), rgba(42,37,32,0.5))' }}
+          />
+        </div>
+      )}
 
-      <article>
-        <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-              {post.category}
-            </span>
-            <span className="text-sm text-muted">5 分鐘閱讀</span>
-            {post.publishedAt && (
-              <span className="text-sm text-muted">
-                {new Date(post.publishedAt).toLocaleDateString('zh-TW')}
-              </span>
-            )}
-          </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">{post.title}</h1>
-          {post.author && (
-            <p className="text-muted">
-              作者：{post.author}
-            </p>
-          )}
-        </header>
+      <div className="container py-8" style={{ maxWidth: '800px' }}>
+        <Breadcrumb
+          items={[
+            { label: '留學攻略', href: '/blog' },
+            { label: post.title },
+          ]}
+        />
 
-        {post.featureImage && (
-          <div className="relative aspect-video rounded-lg overflow-hidden mb-8">
-            <Image
-              src={post.featureImage}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
-
-        {post.excerpt && (
-          <div className="bg-light-bg rounded-lg p-6 mb-8">
-            <p className="text-foreground text-lg leading-relaxed">{post.excerpt}</p>
-          </div>
-        )}
-
-        {post.content && (
-          <div className="prose max-w-none mb-8">
-            <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
-          </div>
-        )}
-
-        {post.showCTA && <CTABanner variant="inline" />}
-
-        {post.tags && post.tags.length > 0 && (
-          <div className="mb-8">
-            <h3 className="text-sm font-semibold text-muted mb-3">標籤</h3>
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-sm bg-gray-100 text-muted rounded-full"
-                >
-                  {tag}
+        <article>
+          {/* Header */}
+          <header className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="tag tag--primary">{post.category}</span>
+              <span className="text-sm" style={{ color: 'var(--text-light)' }}>5 分鐘閱讀</span>
+              {post.publishedAt && (
+                <span className="text-sm" style={{ color: 'var(--text-light)' }}>
+                  {new Date(post.publishedAt).toLocaleDateString('zh-TW')}
                 </span>
-              ))}
+              )}
             </div>
-          </div>
-        )}
+            <h1
+              className="text-h1 mb-4"
+              style={{ fontFamily: "'Fraunces', 'Noto Serif TC', serif", color: 'var(--text)' }}
+            >
+              {post.title}
+            </h1>
+            {post.author && (
+              <p style={{ color: 'var(--text-light)' }}>
+                作者：{post.author}
+              </p>
+            )}
+          </header>
 
-        <AuthorBio name={post.author} />
-        {post.showCTA && <CTABanner />}
-      </article>
+          {/* Excerpt */}
+          {post.excerpt && (
+            <div
+              className="rounded-lg p-6 mb-8"
+              style={{ background: 'var(--bg-alt)', border: '1px solid var(--border-light)' }}
+            >
+              <p className="text-lg leading-relaxed" style={{ color: 'var(--text)' }}>{post.excerpt}</p>
+            </div>
+          )}
+
+          {/* Content */}
+          {post.content && (
+            <div className="prose max-w-none mb-8">
+              <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
+            </div>
+          )}
+
+          {post.showCTA && <CTABanner variant="inline" />}
+
+          {/* Tags */}
+          {post.tags && post.tags.length > 0 && (
+            <div className="mb-8">
+              <h3
+                className="text-xs font-semibold mb-3"
+                style={{ color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}
+              >
+                標籤
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="tag tag--primary"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <AuthorBio name={post.author} />
+
+          <div className="separator-brass" />
+
+          {post.showCTA && <CTABanner />}
+        </article>
+      </div>
     </div>
   );
 }
